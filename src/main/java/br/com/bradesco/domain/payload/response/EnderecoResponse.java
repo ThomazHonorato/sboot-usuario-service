@@ -11,7 +11,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class EnderecoResponse {
 
-    private UUID id_endereco;
+    private UUID idEndereco;
     private String rua;
     private String numero;
     private String bairro;

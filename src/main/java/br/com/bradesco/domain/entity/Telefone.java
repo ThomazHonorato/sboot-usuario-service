@@ -19,12 +19,12 @@ public class Telefone implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id_telefone;
+    private UUID idTelefone;
     private String ddd;
     private String telefone;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     private Usuario usuario;
 
 }

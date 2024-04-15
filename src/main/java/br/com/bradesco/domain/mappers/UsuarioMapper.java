@@ -7,14 +7,8 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface UsuarioMapper {
-
-
-
     Usuario toEntity(UsuarioRequest usuarioRequest);
 
-
-
     UsuarioResponse toResponse(final Usuario usuario);
-
 
 }

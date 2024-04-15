@@ -19,7 +19,7 @@ public class Endereco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id_endereco;
+    private UUID idEndereco;
     private String rua;
     private String numero;
     private String bairro;
@@ -28,6 +28,6 @@ public class Endereco implements Serializable {
     private String uf;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
+    @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     private Usuario usuario;
 }

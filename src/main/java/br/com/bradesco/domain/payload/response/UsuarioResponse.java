@@ -12,7 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class UsuarioResponse {
 
-    private UUID id_usuario;
+    private UUID idUsuario;
     private String nome;
     private String sobrenome;
     private String email;

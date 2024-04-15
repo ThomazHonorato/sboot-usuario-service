@@ -20,7 +20,7 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id_usuario;
+    private UUID idUsuario;
     private String nome;
     private String sobrenome;
     private LocalDateTime dataNascimento;
