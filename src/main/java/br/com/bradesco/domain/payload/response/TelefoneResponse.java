@@ -13,6 +13,6 @@ public class TelefoneResponse {
 
     private UUID idTelefone;
     private String ddd;
-    private String numero;
+    private String telefone;
 
 }
