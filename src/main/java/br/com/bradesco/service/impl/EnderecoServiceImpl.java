@@ -4,8 +4,10 @@ import br.com.bradesco.domain.entity.Endereco;
 import br.com.bradesco.domain.mappers.EnderecoMapper;
 import br.com.bradesco.domain.payload.request.EnderecoRequest;
 import br.com.bradesco.domain.payload.response.EnderecoResponse;
+import br.com.bradesco.exceptions.EnderecoNotFoundException;
 import br.com.bradesco.repository.EnderecoRepository;
 import br.com.bradesco.service.EnderecoService;
+import br.com.bradesco.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,11 +19,13 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class EnderecoServiceImpl implements EnderecoService {
 
+    private final UsuarioService usuarioService;
     private final EnderecoRepository enderecoRepository;
     private final EnderecoMapper enderecoMapper;
 
     @Override
     public EnderecoResponse createEndereco(final EnderecoRequest enderecoRequest){
+        usuarioService.getUsuarioById(enderecoRequest.getIdUsuario());
         return enderecoMapper.toResponse(enderecoRepository.save(enderecoMapper.toEntity(enderecoRequest)));
     }
 
@@ -43,6 +47,6 @@ public class EnderecoServiceImpl implements EnderecoService {
     }
 
     private Endereco getEndereco(UUID idEndereco) {
-        return enderecoRepository.findById(idEndereco).orElseThrow();
+        return enderecoRepository.findById(idEndereco).orElseThrow(EnderecoNotFoundException::new);
     }
 }

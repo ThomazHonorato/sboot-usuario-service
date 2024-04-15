@@ -4,8 +4,10 @@ import br.com.bradesco.domain.entity.Telefone;
 import br.com.bradesco.domain.mappers.TelefoneMapper;
 import br.com.bradesco.domain.payload.request.TelefoneRequest;
 import br.com.bradesco.domain.payload.response.TelefoneResponse;
+import br.com.bradesco.exceptions.TelefoneNotFoundException;
 import br.com.bradesco.repository.TelefoneRepository;
 import br.com.bradesco.service.TelefoneService;
+import br.com.bradesco.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,11 +19,13 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class TelefoneServiceImpl implements TelefoneService {
 
+    private final UsuarioService usuarioService;
     private final TelefoneRepository telefoneRepository;
     private final TelefoneMapper telefoneMapper;
 
     @Override
     public TelefoneResponse createTelefone(final TelefoneRequest telefoneRequest){
+        usuarioService.getUsuarioById(telefoneRequest.getIdUsuario());
         return telefoneMapper.toResponse(telefoneRepository.save(telefoneMapper.toEntity(telefoneRequest)));
     }
 
@@ -51,7 +55,7 @@ public class TelefoneServiceImpl implements TelefoneService {
     }
 
     private Telefone getTelefone(UUID idTelefone) {
-        return telefoneRepository.findById(idTelefone).orElseThrow();
+        return telefoneRepository.findById(idTelefone).orElseThrow(TelefoneNotFoundException::new);
     }
 
 }

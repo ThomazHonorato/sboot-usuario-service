@@ -4,6 +4,7 @@ import br.com.bradesco.domain.entity.Usuario;
 import br.com.bradesco.domain.mappers.UsuarioMapper;
 import br.com.bradesco.domain.payload.request.UsuarioRequest;
 import br.com.bradesco.domain.payload.response.UsuarioResponse;
+import br.com.bradesco.exceptions.UsuarioNotFoundException;
 import br.com.bradesco.repository.UsuarioRepository;
 import br.com.bradesco.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
@@ -45,6 +46,6 @@ public class UsuarioServiceImpl implements UsuarioService {
     //método deletar usuario
 
     private Usuario getUsuario(UUID idUsuario) {
-        return usuarioRepository.findById(idUsuario).orElseThrow();
+        return usuarioRepository.findById(idUsuario).orElseThrow(UsuarioNotFoundException::new);
     }
 }
