@@ -25,4 +25,5 @@ public class UsuarioController {
     public ResponseEntity<UsuarioResponse> createUsuario(@RequestBody UsuarioRequest usuarioRequest){
 
         return ResponseEntity.ok(usuarioService.createUsuario(usuarioRequest));
-    }}
+    }
+}
