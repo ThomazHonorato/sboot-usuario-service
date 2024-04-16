@@ -22,4 +22,5 @@ public class EnderecoResponse {
     private String cep;
     private String cidade;
     private String uf;
+
 }

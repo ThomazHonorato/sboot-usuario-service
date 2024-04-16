@@ -41,14 +41,11 @@ public class GlobalHandlerException {
                 HttpStatus.NOT_FOUND);
     }
 
-
-
-
-
     private ResponseEntity<MessageExceptionHandlerDTO> buildMessageExceptionHandlerDTO(String message, HttpStatus status) {
         return ResponseEntity.status(status)
                 .body(MessageExceptionHandlerDTO.builder()
                         .message(message)
                         .build());
     }
+
 }

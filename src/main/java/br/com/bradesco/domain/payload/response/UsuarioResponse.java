@@ -22,4 +22,5 @@ public class UsuarioResponse {
     private String email;
     private LocalDateTime dataNascimento;
     private String cnpj;
+
 }

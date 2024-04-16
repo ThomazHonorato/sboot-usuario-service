@@ -30,4 +30,5 @@ public class Endereco implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     private Usuario usuario;
+
 }

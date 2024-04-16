@@ -25,4 +25,5 @@ public class TelefoneRequest {
 
     @Schema(description = "Id Relacionamento usuario", example = "2322-AC")
     private UUID idUsuario;
+
 }

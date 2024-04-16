@@ -35,4 +35,5 @@ public class UsuarioRequest {
     @Schema(description = "CNPJ", example = "118827393")
     @NotBlank(message = "CNPJ não pode estar em branco")
     private String cnpj;
+
 }

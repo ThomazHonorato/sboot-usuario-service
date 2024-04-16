@@ -37,4 +37,5 @@ public class EnderecoRequest{
 
     @Schema(description = "Id Relacionamento usuario", example = "2322-AC")
     private UUID idUsuario;
+
 }

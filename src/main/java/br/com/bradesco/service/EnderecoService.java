@@ -15,4 +15,5 @@ public interface EnderecoService {
     List<EnderecoResponse> getAllEndereco();
 
     EnderecoResponse getEnderecoById(final UUID idEndereco);
+
 }

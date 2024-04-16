@@ -15,4 +15,5 @@ public interface TelefoneService {
      List<TelefoneResponse> getAllTelefone();
 
      TelefoneResponse getTelefoneById(final UUID idTelefone);
+
 }

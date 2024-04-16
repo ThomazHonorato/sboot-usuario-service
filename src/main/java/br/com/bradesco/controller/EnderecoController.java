@@ -37,19 +37,17 @@ public class EnderecoController {
             }
     )
     @PostMapping("/cadastro")
-    public ResponseEntity<EnderecoResponse> createEndereco(@RequestBody @Valid EnderecoRequest enderecoRequest){
+    public ResponseEntity<EnderecoResponse> createEndereco(@RequestBody @Valid EnderecoRequest enderecoRequest) {
         return ResponseEntity.ok(enderecoServiceImpl.createEndereco(enderecoRequest));
     }
-
 
     @Operation(
             summary = "Altera um endereço",
             description = "Endpoint para alterar um endereço cadastrado")
     @PutMapping("/{idEndereco}")
-    public ResponseEntity<EnderecoResponse> updateEndereco(@PathVariable UUID idEndereco, @RequestBody @Valid EnderecoRequest enderecoRequest){
+    public ResponseEntity<EnderecoResponse> updateEndereco(@PathVariable UUID idEndereco, @RequestBody @Valid EnderecoRequest enderecoRequest) {
         return ResponseEntity.ok(enderecoServiceImpl.updateEndereco(idEndereco, enderecoRequest));
     }
-
 
     @Operation(
             summary = "Obtém uma lista de endereços cadastrados",
@@ -64,11 +62,10 @@ public class EnderecoController {
             }
     )
     @GetMapping
-    public ResponseEntity<List<EnderecoResponse>> getAllTelefone(){
+    public ResponseEntity<List<EnderecoResponse>> getAllTelefone() {
         List<EnderecoResponse> enderecos = enderecoServiceImpl.getAllEndereco();
         return ResponseEntity.ok(enderecos);
     }
-
 
     @Operation(
             summary = "Obtém um endereço pelo ID",
@@ -93,12 +90,13 @@ public class EnderecoController {
             }
     )
     @GetMapping("{idEndereco}")
-    public ResponseEntity<EnderecoResponse> getEnderecoById(@PathVariable UUID idEndereco){
+    public ResponseEntity<EnderecoResponse> getEnderecoById(@PathVariable UUID idEndereco) {
         EnderecoResponse enderecoResponse = enderecoServiceImpl.getEnderecoById(idEndereco);
-        if(enderecoResponse != null){
+        if (enderecoResponse != null) {
             return ResponseEntity.ok(enderecoResponse);
-        }else{
+        } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
 }

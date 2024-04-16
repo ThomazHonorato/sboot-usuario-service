@@ -24,7 +24,6 @@ public class TelefoneController {
 
     private final TelefoneServiceImpl telefoneServiceImpl;
 
-
     @Operation(
             summary = "Cadastra um telefone no sistema.",
             description = "Endpoint para cadastrar um telefone no sistema.")
@@ -38,19 +37,17 @@ public class TelefoneController {
             }
     )
     @PostMapping("/cadastro")
-    public ResponseEntity<TelefoneResponse> createTelefone(@RequestBody @Valid TelefoneRequest telefoneRequest){
+    public ResponseEntity<TelefoneResponse> createTelefone(@RequestBody @Valid TelefoneRequest telefoneRequest) {
         return ResponseEntity.ok(telefoneServiceImpl.createTelefone(telefoneRequest));
     }
-
 
     @Operation(
             summary = "Altera um telefone",
             description = "Endpoint para alterar um telefone cadastrado")
     @PutMapping("/{idTelefone}")
-    public ResponseEntity<TelefoneResponse> updateTelefone(@PathVariable UUID idTelefone, @RequestBody @Valid TelefoneRequest telefoneRequest){
+    public ResponseEntity<TelefoneResponse> updateTelefone(@PathVariable UUID idTelefone, @RequestBody @Valid TelefoneRequest telefoneRequest) {
         return ResponseEntity.ok(telefoneServiceImpl.updateTelefone(idTelefone, telefoneRequest));
     }
-
 
     @Operation(
             summary = "Obtém uma lista de telefones cadastrados",
@@ -65,11 +62,10 @@ public class TelefoneController {
             }
     )
     @GetMapping
-    public ResponseEntity<List<TelefoneResponse>> getAllTelefone(){
+    public ResponseEntity<List<TelefoneResponse>> getAllTelefone() {
         List<TelefoneResponse> telefones = telefoneServiceImpl.getAllTelefone();
         return ResponseEntity.ok(telefones);
     }
-
 
     @Operation(
             summary = "Obtém um telefone pelo ID",
@@ -94,12 +90,13 @@ public class TelefoneController {
             }
     )
     @GetMapping("{idTelefone}")
-    public ResponseEntity<TelefoneResponse> getTelefoneById(@PathVariable UUID idTelefone){
+    public ResponseEntity<TelefoneResponse> getTelefoneById(@PathVariable UUID idTelefone) {
         TelefoneResponse telefoneResponse = telefoneServiceImpl.getTelefoneById(idTelefone);
-        if(telefoneResponse != null){
+        if (telefoneResponse != null) {
             return ResponseEntity.ok(telefoneResponse);
-        }else{
+        } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
 }

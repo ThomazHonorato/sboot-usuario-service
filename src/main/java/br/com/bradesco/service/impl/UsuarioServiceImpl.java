@@ -43,9 +43,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioMapper.toResponse(getUsuario(idUsuario));
     }
 
-    //método deletar usuario
-
     private Usuario getUsuario(UUID idUsuario) {
         return usuarioRepository.findById(idUsuario).orElseThrow(UsuarioNotFoundException::new);
     }
+
 }
