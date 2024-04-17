@@ -45,11 +45,13 @@ public class TelefoneServiceImpl implements TelefoneService {
         return telefoneMapper.toResponse(telefoneRepository.save(telefone));
     }
 
+    @Override
     public List<TelefoneResponse> getAllTelefone(){
         List<Telefone> telefones = telefoneRepository.findAll();
         return telefones.stream().map(telefoneMapper::toResponse).toList();
     }
 
+    @Override
     public TelefoneResponse getTelefoneById(@PathVariable UUID idTelefone){
         return telefoneMapper.toResponse(getTelefone(idTelefone));
     }

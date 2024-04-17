@@ -37,11 +37,13 @@ public class EnderecoServiceImpl implements EnderecoService {
         return enderecoMapper.toResponse(enderecoRepository.save(endereco));
     }
 
+    @Override
     public List<EnderecoResponse> getAllEndereco(){
         List<Endereco> enderecos = enderecoRepository.findAll();
         return enderecos.stream().map(enderecoMapper::toResponse).toList();
     }
 
+    @Override
     public EnderecoResponse getEnderecoById(@PathVariable UUID idEndereco){
         return enderecoMapper.toResponse(getEndereco(idEndereco));
     }

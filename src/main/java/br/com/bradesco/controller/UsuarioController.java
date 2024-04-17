@@ -43,6 +43,14 @@ public class UsuarioController {
     }
 
     @Operation(
+            summary = "Altera um usuario",
+            description = "Endpoint para alterar um usuario cadastrado")
+    @PutMapping("/{idUsuario}")
+    public ResponseEntity<UsuarioResponse> updateUsuario(@PathVariable UUID idUsuario, @RequestBody @Valid UsuarioRequest usuarioRequest) {
+        return ResponseEntity.ok(usuarioService.updateUsuario(idUsuario, usuarioRequest));
+    }
+
+    @Operation(
             summary = "Obtém um usuario pelo ID",
             description = "Endpoint para buscar um usuario cadastrado pelo seu ID"
     )
@@ -64,14 +72,6 @@ public class UsuarioController {
                             schema = @Schema(implementation = UsuarioNotFoundException.class))
             }
     )
-    @PutMapping("/{idUsuario}")
-    public ResponseEntity<UsuarioResponse> updateUsuario(@PathVariable UUID idUsuario, @RequestBody @Valid UsuarioRequest usuarioRequest) {
-        return ResponseEntity.ok(usuarioService.updateUsuario(idUsuario, usuarioRequest));
-    }
-
-    @Operation(
-            summary = "Altera um usuario",
-            description = "Endpoint para alterar um usuario cadastrado")
     @GetMapping("/{idUsuario}")
     public ResponseEntity<UsuarioResponse> getUsuarioById(@PathVariable UUID idUsuario) {
         UsuarioResponse usuarioResponse = usuarioService.getUsuarioById(idUsuario);
