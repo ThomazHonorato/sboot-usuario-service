@@ -23,7 +23,7 @@ public class Telefone implements Serializable {
     private String ddd;
     private String telefone;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     private Usuario usuario;
 

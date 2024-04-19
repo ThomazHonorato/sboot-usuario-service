@@ -27,7 +27,7 @@ public class Endereco implements Serializable {
     private String cidade;
     private String uf;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     private Usuario usuario;
 

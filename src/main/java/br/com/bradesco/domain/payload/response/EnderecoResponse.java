@@ -15,6 +15,7 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EnderecoResponse {
 
+    private UUID idUsuario;
     private UUID idEndereco;
     private String rua;
     private String numero;

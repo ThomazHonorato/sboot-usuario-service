@@ -10,11 +10,15 @@ import org.mapstruct.MappingTarget;
 @Mapper(componentModel = "spring")
 public interface EnderecoMapper {
 
+    @Mapping(target = "idEndereco", ignore = true)
+    @Mapping(target = "usuario.idUsuario", source="idUsuario")
     Endereco toEntity(EnderecoRequest enderecoRequest);
 
     @Mapping(target="idEndereco", ignore=true)
+    @Mapping(target = "usuario.idUsuario", source = "idUsuario")
     void toUpdateEntity(final EnderecoRequest enderecoRequest, @MappingTarget final Endereco endereco);
 
+    @Mapping(target = "idUsuario", source = "usuario.idUsuario")
     EnderecoResponse toResponse(final Endereco endereco);
 
 }

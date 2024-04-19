@@ -18,5 +18,6 @@ public class TelefoneResponse {
     private UUID idTelefone;
     private String ddd;
     private String telefone;
+    private UUID idUsuario;
 
 }
